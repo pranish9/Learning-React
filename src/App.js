@@ -6,7 +6,9 @@ import AdminLayout from './components/backend/AdminLayout';
 import ContactUs from './pages/frontend/ContactUs';
 import Layout from './components/frontend/Layout';
 import Login from './pages/backend/Login';
-
+import Blog from './pages/backend/Blog';
+import Create from './pages/backend/Create';
+import Article from './pages/backend/Article';
 function App() {
 
   return (
@@ -24,6 +26,9 @@ function App() {
             <Route path="admin/login" element={<Login />}/>
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="/admin/dashboard" element={<Dashboard />} />
+              <Route path="/admin/dashboard/blog" element={<Blog />} />
+              <Route path="/admin/blog/create" element={<Create />} />
+              <Route path="/admin/blog/view" element={<Article />} />
             </Route>
           </Routes>
       </BrowserRouter>
