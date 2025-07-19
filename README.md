@@ -1,5 +1,5 @@
 ## Project Setup
-- `git clone https://github.com/kiranmulmi/learn-react-2025.git`
+- `git clone https://github.com/pranish9/Learning-React.git`
 - `npm install`
 
 ## Start Project
