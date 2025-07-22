@@ -3,6 +3,8 @@ import React, { useState } from "react";
 const Create = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [article, setArticle] = useState("");
+  const [articleError, setArticleError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [authorError, setAuthorError] = useState("");
 
@@ -12,6 +14,7 @@ const Create = () => {
     let error = false;
     setTitleError("");
     setAuthorError("");
+    setArticleError("");
 
 
     if (title === "") {
@@ -22,12 +25,18 @@ const Create = () => {
       setAuthorError("Author is required");
       error = true;
     }
+    if (article === "") {
+      setArticleError("Article is required");
+      error = true;
+    }
   
     if (error) return;
 
 
     setTitle("");
     setAuthor("");
+    setArticle("");
+    alert("Blog post created successfully!");
   
   };
 
@@ -55,7 +64,16 @@ const Create = () => {
           />
           <div style={{ color: "red", fontSize: "0.95rem", minHeight: "16px" }}>{authorError}</div>
         </div>
-       
+       <div style={{ marginBottom: "10px" }}>
+          <label>Article</label>
+          <input
+            type="text"
+            value={article}
+            onChange={e => setArticle(e.target.value)}
+            style={{ width: "100%", padding: "8px", marginTop: "5px", borderRadius: "4px", border: "1px solid #e5e7eb" }}
+          />
+          <div style={{ color: "red", fontSize: "0.95rem", minHeight: "16px" }}>{articleError}</div>
+        </div>
         <button
           type="submit"
           onClick={handleBtnClick}
