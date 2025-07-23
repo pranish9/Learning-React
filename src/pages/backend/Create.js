@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 const Create = () => {
   const [title, setTitle] = useState("");
@@ -7,6 +9,7 @@ const Create = () => {
   const [articleError, setArticleError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [authorError, setAuthorError] = useState("");
+   const navigate = useNavigate();
 
 
   const handleBtnClick = (e) => {
@@ -37,6 +40,12 @@ const Create = () => {
     setAuthor("");
     setArticle("");
     alert("Blog post created successfully!");
+    
+    // Redirect to the blog list page after a short delay
+    setTimeout(() => {
+      navigate('/admin/blog/view');
+    }, 1000);
+  
   
   };
 
