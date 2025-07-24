@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 
 const Blog = () => {
   const navigate = useNavigate();
-    const handleBtnClick = () => {
-        navigate('/admin/blog/create');
-    };
-    const handleBtnClickview = () => {
-        navigate('/admin/blog/view');
-    };
-
-  const blogs = [
+  const [blogs, setBlogs] = useState([
     { id: 1, title: "React Basics", author: "John Doe", date: "2024-07-18" },
     { id: 2, title: "Advanced JS", author: "Jane Smith", date: "2024-07-17" },
-  ];
+  ]);
+
+  const handleBtnClick = () => {
+    navigate('/admin/blog/create');
+  };
+  const handleBtnClickview = () => {
+    navigate('/admin/blog/view');
+  };
+
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this blog?")) {
+      // setBlogs(blogs.filter(blog => blog.id !== id));
+      console.log("Blog deleted:", id);
+    }
+  };
 
   return (
-    <div className = "blog">
+    <div className="blog">
       <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "18px" }}>
         <button onClick={handleBtnClick}>
           Add
@@ -28,24 +35,55 @@ const Blog = () => {
             <th>Title</th>
             <th>Author</th>
             <th>Created On</th>
-            <th >Action</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {blogs.map((blog) => (
             <tr key={blog.id}>
-              <td >{blog.title}</td>
+              <td>{blog.title}</td>
               <td>{blog.author}</td>
               <td>{blog.date}</td>
               <td>
-                <button >
+                <button
+                  style={{
+                    background: "#ef4444",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "4px",
+                    padding: "5px 12px",
+                    marginRight: "8px",
+                    cursor: "pointer"
+                  }}
+                  onClick={() => handleDelete(blog.id)}
+                >
                   Delete
                 </button>
-                <button class onClick={handleBtnClickview}>
+                <button
+                  style={{
+                    background: "#2563eb",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "4px",
+                    padding: "5px 12px",
+                    marginRight: "8px",
+                    cursor: "pointer"
+                  }}
+                  onClick={handleBtnClickview}
+                >
                   View
                 </button>
-                <button>
-                 Edit
+                <button
+                  style={{
+                    background: "#fbbf24",
+                    color: "#222",
+                    border: "none",
+                    borderRadius: "4px",
+                    padding: "5px 12px",
+                    cursor: "pointer"
+                  }}
+                onClick={handleBtnClick} >
+                  Edit
                 </button>
               </td>
             </tr>

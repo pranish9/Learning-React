@@ -2,7 +2,7 @@ import React from "react";
 
 const Article = () => {
   return (
-    <div style={{ maxWidth: "900px", margin: "32px auto", background: "#fff", borderRadius: "12px", boxShadow: "0 2px 16px #e5e7eb", padding: "32px" }}>
+    <div style={{ maxWidth: "900px", background: "#fff", borderRadius: "12px", boxShadow: "0 2px 16px #e5e7eb", padding: "32px" }}>
       <h1 style={{ textAlign: "center", color: "#2563eb", marginBottom: "8px" }}>
         Company Profile Website<br />for<br />Kathmandu Repairing Center Pvt. Ltd.
       </h1>

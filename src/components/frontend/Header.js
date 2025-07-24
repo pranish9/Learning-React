@@ -31,7 +31,7 @@ const Header = () => {
       }}>
         My Application
       </div>
-      <nav>
+      <nav style={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <NavLink
           to="/home"
           style={({ isActive }) => ({
@@ -64,6 +64,21 @@ const Header = () => {
           })}
         >
           Contact Us
+        </NavLink>
+        <NavLink
+          to="/admin/login"
+          style={{
+            background: "#2563eb",
+            color: "#fff",
+            borderRadius: "8px",
+            padding: "7px 18px",
+            textDecoration: "none",
+            fontWeight: "bold",
+            marginLeft: "16px",
+            transition: "background 0.2s"
+          }}
+        >
+          Login
         </NavLink>
       </nav>
     </header>
