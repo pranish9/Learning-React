@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import BlogRow from "../../components/backend/BlogRow";
 
 const Blog = () => {
   const navigate = useNavigate();
-  const [blogs, setBlogs] = useState([
+  const [blogs] = useState([
     { id: 1, title: "React Basics", author: "John Doe", date: "2024-07-18" },
     { id: 2, title: "Advanced JS", author: "Jane Smith", date: "2024-07-17" },
   ]);
@@ -39,7 +40,8 @@ const Blog = () => {
           </tr>
         </thead>
         <tbody>
-          {blogs.map((blog) => (
+          <BlogRow blogData={blogs} handleDelete={handleDelete} handleBtnClickview={handleBtnClickview} handleBtnClick={handleBtnClick} />
+          {/* {blogs.map((blog) => (
             <tr key={blog.id}>
               <td>{blog.title}</td>
               <td>{blog.author}</td>
@@ -87,7 +89,7 @@ const Blog = () => {
                 </button>
               </td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </table>
     </div>
