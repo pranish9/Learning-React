@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-
+import { useParams } from "react-router";
 
 
 const Create = () => {
+  const { id } = useParams();
+  const [data, setData] = useState({});
+  useEffect (() => {
+    const blog = setBlogById(id);
+    setData({
+      ...data,
+      title: blog.title,
+      content: blog.content,
+    }
+  );
+  }, [])
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [article, setArticle] = useState("");
