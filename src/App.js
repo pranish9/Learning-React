@@ -29,6 +29,7 @@ function App() {
               <Route path="/admin/dashboard/blog" element={<Blog />} />
               <Route path="/admin/blog/create" element={<Create />} />
               <Route path="/admin/blog/view" element={<Article />} />
+              <Route path="/admin/blog/edit/:id" element={<Create />} />
             </Route>
           </Routes>
       </BrowserRouter>

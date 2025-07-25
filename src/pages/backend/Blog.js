@@ -1,15 +1,17 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import { NavLink } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router"
+import {getAllBlogs} from "../../services/blog";
 
 import BlogRow from "../../components/backend/BlogRow";
 
 const Blog = () => {
   const navigate = useNavigate();
-  const [blogs] = useState([
-    { id: 1, title: "React Basics", author: "John Doe", date: "2024-07-18" },
-    { id: 2, title: "Advanced JS", author: "Jane Smith", date: "2024-07-17" },
-  ]);
+  const [blogs,setBlogs] = useState([]);
+  useEffect(() => {
+    const data = getAllBlogs();
+    setBlogs(data);
+  }, [])
+
 
   const handleBtnClick = () => {
     navigate('/admin/blog/create');

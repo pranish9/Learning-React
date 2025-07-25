@@ -46,10 +46,10 @@ const BlogRow = (props) => {
                 padding: "5px 12px",
                 cursor: "pointer"
               }}
-              onClick={() => props.handleBtnClick(item.id)}
+              
             >
               <NavLink to ={`/admin/blog/edit/${item.id}`}>Edit</NavLink>
-              Edit
+         
             </button>
           </td>
         </tr>
