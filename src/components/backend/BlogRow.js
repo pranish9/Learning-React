@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 const BlogRow = (props) => {
   return (
     <>
@@ -46,6 +48,7 @@ const BlogRow = (props) => {
               }}
               onClick={() => props.handleBtnClick(item.id)}
             >
+              <NavLink to ={`/admin/blog/edit/${item.id}`}>Edit</NavLink>
               Edit
             </button>
           </td>
