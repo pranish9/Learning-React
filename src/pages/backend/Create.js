@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
-
+import { getBlogById } from "../../services/blog"; // FIX: Import the correct function
 
 const Create = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
-  useEffect (() => {
-    const blog = setBlogById(id);
-    setData({
-      ...data,
-      title: blog.title,
-      content: blog.content,
-    }
-  );
-  }, [])
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [article, setArticle] = useState("");
   const [articleError, setArticleError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [authorError, setAuthorError] = useState("");
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (id) {
+      const blog = getBlogById(id); // FIX: Use correct function name
+      if (blog) {
+        setData(blog);
+        setTitle(blog.title || "");
+        setAuthor(blog.author || "");
+        setArticle(blog.content || "");
+      }
+    }
+  }, []);
 
   const handleBtnClick = (e) => {
     e.preventDefault();
@@ -30,7 +32,6 @@ const Create = () => {
     setTitleError("");
     setAuthorError("");
     setArticleError("");
-
 
     if (title === "") {
       setTitleError("Title is required");
@@ -44,26 +45,23 @@ const Create = () => {
       setArticleError("Article is required");
       error = true;
     }
-  
-    if (error) return;
 
+    if (error) return;
 
     setTitle("");
     setAuthor("");
     setArticle("");
     alert("Blog post created successfully!");
-    
-    // Redirect to the blog list page after a short delay
+
     setTimeout(() => {
       navigate('/admin/blog/view');
     }, 1000);
-  
-  
   };
 
   return (
     <div style={{ maxWidth: "400px", margin: "40px auto", background: "#fff", padding: "24px", borderRadius: "8px", boxShadow: "0 2px 8px #e5e7eb" }}>
-      <h2 style={{ marginBottom: "18px", textAlign: "center" }}>Add Blog Form</h2>
+      { !id && <h2 style={{ marginBottom: "18px", textAlign: "center" }}>Add Blog Form</h2>}
+      { id && <h2 style={{ marginBottom: "18px", textAlign: "center" }}> Edit Blog Form</h2>}
       <form>
         <div style={{ marginBottom: "10px" }}>
           <label>Title</label>
@@ -85,7 +83,7 @@ const Create = () => {
           />
           <div style={{ color: "red", fontSize: "0.95rem", minHeight: "16px" }}>{authorError}</div>
         </div>
-       <div style={{ marginBottom: "10px" }}>
+        <div style={{ marginBottom: "10px" }}>
           <label>Article</label>
           <input
             type="text"
