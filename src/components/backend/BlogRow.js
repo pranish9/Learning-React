@@ -1,9 +1,9 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const BlogRow = (props) => {
   return (
     <>
-      {props.blogData.map((item, index) => (
+      {props.blogData && props.blogData.map((item, index) => (
         <tr key={index}>
           <td>{item.title}</td>
           <td>{item.author}</td>
@@ -37,20 +37,20 @@ const BlogRow = (props) => {
             >
               View
             </button>
-            <button
-              style={{
-                background: "#fbbf24",
-                color: "#222",
-                border: "none",
-                borderRadius: "4px",
-                padding: "5px 12px",
-                cursor: "pointer"
-              }}
-              
-            >
-              <NavLink to ={`/admin/blog/edit/${item.id}`}>Edit</NavLink>
-         
-            </button>
+            <NavLink to={`/admin/blog/edit/${item.id}`}>
+              <button
+                style={{
+                  background: "#fbbf24",
+                  color: "#222",
+                  border: "none",
+                  borderRadius: "4px",
+                  padding: "5px 12px",
+                  cursor: "pointer"
+                }}
+              >
+                Edit
+              </button>
+            </NavLink>
           </td>
         </tr>
       ))}

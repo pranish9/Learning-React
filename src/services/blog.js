@@ -1,11 +1,20 @@
+import axios from 'axios';
 export const getAllBlogs = () => {
-    const data = [
-    { id: 1, title: "React Basics", author: "John Doe", content: "2024-07-18" },
-    { id: 2, title: "Advanced JS", author: "Jane Smith", content: "2024-07-17" },
-    ]
-    return data;
+return new Promise((resolve) => {
+    axios.get('http://localhost:4000/blogs')
+    .then(function (response) {
+      resolve(response.data);
+    })
+  });
 }
- export const getBlogById = (id) => {
-    const blogs = getAllBlogs();
-    return blogs.find((x) => x.id === parseInt(id));
- }
+/*
+
+export const getAllBlogs = async () => {
+  const response = await axios.get('http://localhost:4000/blogs');
+  return response.data;
+}
+  */
+export const getBlogById = async (id) => {
+  const response = await axios.get(`http://localhost:4000/blogs/${id}`);
+  return response.data;
+}

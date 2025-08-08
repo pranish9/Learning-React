@@ -14,15 +14,17 @@ const Create = () => {
   const [authorError, setAuthorError] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { 
     if (id) {
-      const blog = getBlogById(id); // FIX: Use correct function name
-      if (blog) {
-        setData(blog);
-        setTitle(blog.title || "");
-        setAuthor(blog.author || "");
-        setArticle(blog.content || "");
-      }
+    getBlogById(id).then((response) => {
+        setData(
+          {
+            ...data,
+            title: response.title,
+            content: response.content,
+          }
+        );
+      });
     }
   }, []);
 
