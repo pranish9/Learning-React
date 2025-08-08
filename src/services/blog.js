@@ -7,6 +7,5 @@ export const getAllBlogs = () => {
 }
  export const getBlogById = (id) => {
     const blogs = getAllBlogs();
-    const blog = blogs.find((x) => x.id === parseInt(id));
-    return blogs;
+    return blogs.find((x) => x.id === parseInt(id));
  }

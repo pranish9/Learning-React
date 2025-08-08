@@ -9,6 +9,8 @@ import Login from './pages/backend/Login';
 import Blog from './pages/backend/Blog';
 import Create from './pages/backend/Create';
 import Article from './pages/backend/Article';
+import User from './pages/backend/User';
+import CreateUser from './pages/backend/CreateUser';
 function App() {
 
   return (
@@ -27,9 +29,12 @@ function App() {
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="/admin/dashboard" element={<Dashboard />} />
               <Route path="/admin/dashboard/blog" element={<Blog />} />
+              <Route path="/admin/dashboard/user" element={<User />} />
               <Route path="/admin/blog/create" element={<Create />} />
               <Route path="/admin/blog/view" element={<Article />} />
               <Route path="/admin/blog/edit/:id" element={<Create />} />
+              <Route path="/admin/user/edit/:id" element={<CreateUser />} />
+              <Route path="/admin/user/create" element={<CreateUser />} />
             </Route>
           </Routes>
       </BrowserRouter>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router"
 import {getAllBlogs} from "../../services/blog";
-
 import BlogRow from "../../components/backend/BlogRow";
 
 const Blog = () => {
@@ -22,7 +21,7 @@ const Blog = () => {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this blog?")) {
-      // setBlogs(blogs.filter(blog => blog.id !== id));
+      setBlogs(blogs.filter(blog => blog.id !== id));
       console.log("Blog deleted:", id);
     }
   };
@@ -45,55 +44,7 @@ const Blog = () => {
         </thead>
         <tbody>
           <BlogRow blogData={blogs} handleDelete={handleDelete} handleBtnClickview={handleBtnClickview} handleBtnClick={handleBtnClick} />
-          {/* {blogs.map((blog) => (
-            <tr key={blog.id}>
-              <td>{blog.title}</td>
-              <td>{blog.author}</td>
-              <td>{blog.date}</td>
-              <td>
-                <button
-                  style={{
-                    background: "#ef4444",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 12px",
-                    marginRight: "8px",
-                    cursor: "pointer"
-                  }}
-                  onClick={() => handleDelete(blog.id)}
-                >
-                  Delete
-                </button>
-                <button
-                  style={{
-                    background: "#2563eb",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 12px",
-                    marginRight: "8px",
-                    cursor: "pointer"
-                  }}
-                  onClick={handleBtnClickview}
-                >
-                  View
-                </button>
-                <button
-                  style={{
-                    background: "#fbbf24",
-                    color: "#222",
-                    border: "none",
-                    borderRadius: "4px",
-                    padding: "5px 12px",
-                    cursor: "pointer"
-                  }}
-                onClick={handleBtnClick} >
-                  Edit
-                </button>
-              </td>
-            </tr>
-          ))} */}
+         
         </tbody>
       </table>
     </div>

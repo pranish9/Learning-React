@@ -6,6 +6,7 @@ const Sidebar = () => {
         <ul>
           <li><NavLink to="/admin/dashboard">Dashboard</NavLink></li>
           <li><NavLink to="/admin/dashboard/blog">Blog</NavLink></li>
+          <li><NavLink to="/admin/dashboard/user">User</NavLink></li>
         </ul>
       </div>
     </>
