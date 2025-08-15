@@ -102,3 +102,6 @@
   margin: 50px auto;
 }
 
+ .error {
+  color: red;
+ }

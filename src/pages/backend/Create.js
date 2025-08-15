@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
-import { getBlogById } from "../../services/blog"; // FIX: Import the correct function
-
+import { Blog, getBlogById } from "../../services/blog";
 const Create = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
